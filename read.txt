@@ -1,0 +1,3 @@
+welcome to Node JS
+hope you know JavaScript
+Node Js is a famous backend language
