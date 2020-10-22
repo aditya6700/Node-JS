@@ -4,7 +4,7 @@
 // this wrapper function has a anonymous function which contains our code 
 // this makes all our variables private
 // this wrapper function is called as IIFE (Immediately Invoked Function Experssiom)
-//  IIFE means this anonymous function is executed immediately after the function is invoked
+//  IIFE means this anonymous function is executed immediately after the function is defined
 
 ((exports, require, module, __filename, __dirname) => {
     var name = "masteroot";

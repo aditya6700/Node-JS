@@ -1,0 +1,106 @@
+Node.js is written in C++
+At the heart of Node.js is the V8 engine
+The v8 engine converts our JS into machine code 
+
+Client and Server
+-----------------------
+
+PROTOCOLS -- a set of communication rules that ewo sides ageree to use  when communicating
+SOCKET -- a channel between client and server where the data is  shared
+
+The http.createServer() method includes request and response parameters which is supplied by Node.js.
+The request object can be used to get information about the current HTTP request
+e.g., url, request header, and data.
+The response object can be used to send a response for a current HTTP request.
+If the response from the HTTP server is supposed to be displayed as HTML,
+you should include an HTTP header with the correct content type:
+
+
+EVENTS MODULES
+-------------------
+Node.js has a built-in module, called "Events",
+where you can create-, fire-, and listen for- your own events.
+
+The concept is quite simple: emitter objects emit named events that cause previously registered listeners to be called. So, an emitter object
+basically has two main features:
+Emitting name events.
+Registering and unregistering listener functions.
+
+BUFFERS
+--------------
+1 - temporary storage spot for a chunk of data that is being transferred from one place to another
+2 - the buffer is filled with data then passed along
+3 - transfers small amount of data at a time
+
+STREAMS
+--------------
+Streams are objects that let you read data from a source or write data to a
+destination in continuous fashion.
+(or)
+Streaming means listening to music or watching video in 'real time', instead of
+downloading a file to your computer and watching it later
+
+In Node.js, there are four types of streams –
+
+READABLE – Stream which is used for read operation.
+WRITABLE - Stream which is used for write operation.
+DUPLEX - Stream which can be used for both read and write operation.
+TRANSFORM - A type of duplex stream where the output is computed based on input.
+
+Each type of Stream is an EventEmitter instance and throws several events at
+different instance of times. For example, some of the commonly used events are -
+
+DATA – This event is fired when there is data is available to read.
+END – This event is fired when there is no more data to read.
+ERROR - This event is fired when there is any error receiving or writing data.
+FINISH - This event is fired when all the data has been flushed to underlying system
+
+
+PIPES
+------------
+stream.pipe(), the method used to take a readable stream and connect it to a
+writable stream
+
+
+--------------->>> NPM <<<-----------------------
+NPM ---------- NODE PACKAGE MANAGER
+1 - To install NPM packages we use the command 
+        --npm install package_name
+2 -  To create our own JSON package 
+        --npm init
+            it asks some details about our package or project
+3 - To add any NPM packages to our project or as dependencies of our project
+        --npm install package_name -save
+            this command updates our JSON file with the packages
+4 - let some person uses our package(project) they don't know what packages we install so 
+    we add dependencies to our JSON and to install all of them at onece we use
+        --npm install
+
+------------ NODEMON --------------
+ NODEMON is the best package helps to restart the program 
+ automatically whenever there is a change in the program
+ instead we kill the process and run it again
+
+ to install  NODEMON
+ --npm install -g nodemon    (-g indicates this package install globally)
+
+ to use nodemon
+ --nodemon file_name
+
+
+ ------- EXPRESS NPM -------------
+1 - easy and flexible routing system
+2 - integrates with many templates engines
+3 - contains a middleware framework
+ 
+                ------------ HTTP requests -------------
+                1 - GET -  to get a request from server tpye url 
+                2 - PUT -  post data or fill a form
+                3 - DELETE  -  deleting data 
+                4 - PUT  -  puting(updating some value)
+ responding to these requests through EXPRESS
+
+  - GET  -> var.get('route',fn)
+  - PUT  -> var.put('route',fn)
+  - DELETE -> var.delete('route',fn)
+
