@@ -1,2 +1,0 @@
-This is example for asynchronous file functions
-Always use a callback function

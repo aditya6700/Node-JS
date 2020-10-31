@@ -94,13 +94,51 @@ NPM ---------- NODE PACKAGE MANAGER
 3 - contains a middleware framework
  
                 ------------ HTTP requests -------------
-                1 - GET -  to get a request from server tpye url 
-                2 - PUT -  post data or fill a form
-                3 - DELETE  -  deleting data 
-                4 - PUT  -  puting(updating some value)
+                1 - GET -  to get a request from server tpye url ---- read
+                2 - POST -  post data or fill a form  --------------- create
+                3 - DELETE  -  deleting data ------------------------ delete
+                4 - PUT  -  updating some value --------------------- update
+ 
  responding to these requests through EXPRESS
+  - GET  -> var.get('route',callback function)
+  - PUT  -> var.put('route',callback function)
+  - DELETE -> var.delete('route',callback function)
 
-  - GET  -> var.get('route',fn)
-  - PUT  -> var.put('route',fn)
-  - DELETE -> var.delete('route',fn)
+The callback function has 2 parameters, request(req) and response(res).
+The request object(req) represents the HTTP request and
+has properties for the request query string, parameters, body
+HTTP headers, etc.
+Similarly, the response object represents the HTTP response
+that the Express app sends when it receives an HTTP request.
+
+
+if you have multiple data to write to an api
+use res.write()
+    ..
+    ..
+    ..
+    ..
+    res.send()   ------- to end sending response
+
+TEMPLATE ENGINES
+---------------------------------------
+    A template engine enables you to use static template files in your application.
+At runtime, the template engine replaces variables in a template file with 
+actual values, and transforms the template into an HTML file sent to the client.
+This approach makes it easier to design an HTML page.
+
+Some popular template engines that work with Express are Pug, Mustache aka Handlebars, and EJS. 
+
+To render template files, set the following application setting properties, 
+set in app.js in the default app created by the generator:
+
+1.  view engine, the template engine to use. 
+    For example, to use the Handlebars template engine: app.set('view engine', 'hbs').
+2. 'views', the default directory where the template files are located
+3. If you want to rename the folder other than views the one must specify its path.
+    Eg: app.set('views', './views'). 
+    This defaults to the views directory in the application root directory.
+
+PARTIALS
+---------------------------
 
