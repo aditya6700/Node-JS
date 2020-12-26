@@ -1,28 +1,25 @@
-const express = require('express');
-const Detail = require('../models/model');
+const express = require("express");
+const Detail = require("../models/model");
 const router = new express.Router();
 
-router.get('/',(req,res) => {
-    res.render('index');
+router.get("/", (req, res) => {
+    res.render("index");
 });
 
-router.get('/login',(req,res) => {
-    res.render('login');
+router.get("/login", (req, res) => {
+    res.render("login");
 });
 
-router.get('/register',(req,res) => {
-    res.render('register')
-})
+router.get("/register", (req, res) => {
+    res.render("register");
+});
 
-router.post('/register', async (req,res) => {
-     try {
-        
-        const password = req.body.password;
-        const re_password = req.body.re_password;
+router.post("/register", async (req, res) => {
+    try {
+        const { password, re_password } = req.body;
 
         if (password === re_password) {
-            
-            const registerData =  new Detail({
+            const registerData = new Detail({
                 firstname: req.body.firstname,
                 lasttname: req.body.lasttname,
                 email: req.body.email,
@@ -30,20 +27,33 @@ router.post('/register', async (req,res) => {
                 phone: req.body.phone,
                 age: req.body.age,
                 password,
-                re_password
+                re_password,
             });
 
             const resu = await registerData.save();
             res.status(201).render("index");
-
-        }else{
+        } else {
             res.status(401).send("passwords does not match");
         }
-
-
-     } catch (err) {
+    } catch (err) {
         res.status(401).send(err);
-     }
-})
+    }
+});
 
-module.exports = router
+router.post("/login", async (req, res) => {
+    try {
+
+        const { email, password } = req.body;
+        const result = await Detail.findOne({ $and : [{email}, {password}] });
+        // (result) ? res.status(201).render('index') :  res.status(401).send(`Invalid login Details.`);
+        if (result) {
+            res.status(201).render('index')
+        } else {
+            throw new Error('Invalid login Details')
+        }
+    } catch (err) {
+        res.status(401).send(`${err}`);
+    }
+});
+
+module.exports = router;

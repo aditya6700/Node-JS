@@ -1,31 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
 }
 
-:root{
+:root {
     --main-bg: #2d1d46;
     --main-color: #0393e0;
     --main-text: #fff;
 }
 
-html{
+html {
     font-size: 62.5%;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
-.row{
+.row {
     margin: 0;
 }
 
-h1{
+h1 {
     color: brown;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px Orgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: Opx 2px 2px Orgba(0, 0, 0, 0.3);
+    box-shadow: Opx 2px 2px Orgba(0, 0, 0, 0.3);
+}
+.login-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help {
+    margin-top: 10px;
+}
+.new-account {
+    display: block;
+    margin-top: 10px;
 }

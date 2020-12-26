@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {{>links}}
 </head>
+
 <body>
-     {{>nav}}
+    {{>nav}}
     <h1> welcome to registration page </h1>
     <div class="tab-content" id="myTabContent">
         <form action="/register" method="post">
             <div class="row register-form">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name" 
-                            value="" name="firstname" >
+                        <input type="text" class="form-control" placeholder="First Name" value="" name="firstname">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email" 
-                            value="" name="email" >
+                        <input type="email" class="form-control" placeholder="Email" value="" name="email">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="Phone NO" 
-                            value="" name="phone" >
+                        <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="Phone NO"
+                            value="" name="phone">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="your password" 
-                            value="" name="password" >
+                        <input type="password" class="form-control" placeholder="your password" value=""
+                            name="password">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Last Name" 
-                            value="" name="lasttname" >
+                        <input type="text" class="form-control" placeholder="Last Name" value="" name="lasttname">
                     </div>
                     <div class="form-group">
                         <div class="maxl">
@@ -39,18 +38,17 @@
                                 <span>Male</span>
                             </label>
                             <label class="radio inline">
-                                <input type="radio" value="female" name="gender" >
+                                <input type="radio" value="female" name="gender">
                                 <span>Female</span>
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="your age" 
-                            value="" name="age" >
+                        <input type="text" class="form-control" placeholder="your age" value="" name="age">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="re-enter your password" 
-                            value="" name="re_password" >
+                        <input type="password" class="form-control" placeholder="re-enter your password" value=""
+                            name="re_password">
                     </div>
 
                     <input type="submit" class="btnRegister" value="Register">
@@ -59,6 +57,9 @@
             </div>
         </form>
     </div>
+
+    {{>jqueryLinks}}
     {{>footer}}
 </body>
+
 </html>
