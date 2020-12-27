@@ -1,5 +1,7 @@
 const express = require("express");
 const Detail = require("../models/model");
+const bcrypt = require('bcryptjs');
+
 const router = new express.Router();
 
 router.get("/", (req, res) => {
@@ -44,9 +46,20 @@ router.post("/login", async (req, res) => {
     try {
 
         const { email, password } = req.body;
-        const result = await Detail.findOne({ $and : [{email}, {password}] });
-        // (result) ? res.status(201).render('index') :  res.status(401).send(`Invalid login Details.`);
-        if (result) {
+
+        // Without hashing
+        // const result = await Detail.findOne({ $and : [{email}, {password}] });
+        // if (result) {
+        //     res.status(201).render('index')
+        // } else {
+        //     throw new Error('Invalid login Details')
+        // }
+
+
+        // with hashing
+        const result = await Detail.findOne({email});
+        const hashOk = await bcrypt.compare(password,result.password)
+        if (hashOk) {
             res.status(201).render('index')
         } else {
             throw new Error('Invalid login Details')
