@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const mernSchema = new mongoose.Schema({
     firstname: {
@@ -46,8 +47,34 @@ const mernSchema = new mongoose.Schema({
     re_password:{
         type: String,
         required: true,
-    }
+    },
+    tokens: [{
+        token:{
+            type: String,
+            required: true
+        }
+    }]
 });
+
+// generating tokens
+mernSchema.methods.genterateAuthToken = async function(){
+    try {
+        
+        const token = jwt.sign({_id: this._id.toString()}, "thisisaprivatekeywhichis32charlong");
+        // console.log(token);
+        
+        // this.tokens = this.tokens.concat({token:token})
+        this.tokens = this.tokens.concat({token})
+        await this.save();
+
+        return token;
+
+    } catch (err) {
+        res.status(401).send(`The error with JWT is ${err}`);
+        console.log(`The error with JWT is ${err}`);
+    }
+}
+
 
 // the 'pre' method takes two parameter
 // 1. condition
@@ -67,9 +94,8 @@ mernSchema.pre('save', async function(next){
     if (this.isModified("password")) {
         // console.log(`original password ${this.password}`);
         this.password = await bcrypt.hash(this.password,10);
+        this.re_password = await bcrypt.hash(this.re_password,10);;
         // console.log(`original password ${this.password}`);
-
-        this.re_password = undefined;
     }
 
     next();

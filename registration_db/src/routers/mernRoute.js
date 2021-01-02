@@ -32,7 +32,11 @@ router.post("/register", async (req, res) => {
                 re_password,
             });
 
-            const resu = await registerData.save();
+
+            const token = await registerData.genterateAuthToken();
+
+            const result = await registerData.save();
+
             res.status(201).render("index");
         } else {
             res.status(401).send("passwords does not match");
@@ -57,8 +61,12 @@ router.post("/login", async (req, res) => {
 
 
         // with hashing
-        const result = await Detail.findOne({email});
-        const hashOk = await bcrypt.compare(password,result.password)
+        const resultData = await Detail.findOne({email});
+        const hashOk = await bcrypt.compare(password,resultData.password);
+
+        // JWT tokens
+        const token = await resultData.genterateAuthToken();
+
         if (hashOk) {
             res.status(201).render('index')
         } else {

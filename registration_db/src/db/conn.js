@@ -7,7 +7,7 @@ mongoose.connect("mongodb://localhost:27017/BackendMERN",{
     useFindAndModify: false
 })
 .then(() => {
-        console.log("connection succesfull");
+        console.log("connection is succesfull with database");
 })
 .catch((err) => {
     console.log(`connection failed ${err}`);
