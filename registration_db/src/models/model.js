@@ -60,7 +60,7 @@ const mernSchema = new mongoose.Schema({
 mernSchema.methods.genterateAuthToken = async function(){
     try {
         
-        const token = jwt.sign({_id: this._id.toString()}, "thisisaprivatekeywhichis32charlong");
+        const token = jwt.sign({_id: this._id.toString()}, process.env.SECRET_KEY);
         // console.log(token);
         
         // this.tokens = this.tokens.concat({token:token})

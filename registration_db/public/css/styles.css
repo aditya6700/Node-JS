@@ -30,6 +30,11 @@ h1 {
     color: brown;
 }
 
+
+span.navbar-toggler-icon {
+    background-color: var(--main-color);
+}
+
 .account-wall {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
@@ -60,4 +65,10 @@ h1 {
 .new-account {
     display: block;
     margin-top: 10px;
+}
+
+.main_error img{
+    width: 60rem;
+    height: 30rem;
+    filter: drop-shadow(0 5px 6px rgb(83, 79, 79));
 }
