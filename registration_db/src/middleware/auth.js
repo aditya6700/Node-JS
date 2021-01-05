@@ -16,12 +16,14 @@ const auth = async (req, res, next) => {
         const user = await Detail.findOne({_id: verifyUser._id});
         // console.log(user)
 
+        // assigning token and user to the body so that these are accessed at /logout
+        req.token = token;
+        req.user = user;
+
         next();
 
-    } catch (err) {
-        res.status(401).render('error',{
-            errormsg: err
-        });
+    } catch (errormsg) {
+        res.status(401).render('error',{ errormsg });
     }
 };
 

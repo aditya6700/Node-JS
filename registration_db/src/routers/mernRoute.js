@@ -110,6 +110,29 @@ router.post("/login", async (req, res) => {
     }
 });
 
+// auth acts as a middlware for authentication  for logout
+router.get("/logout", auth, async (req, res) => {
+    try{
+
+        // // removing the present cookie  ==== logout for single user
+        // req.user.tokens = req.user.tokens.filter((ele) => {
+        //     return ele.token !== req.token
+        // });
+
+        // logout all users
+        req.user.tokens = [];
+
+        res.clearCookie("jwt"); // to clear cookies from browser
+        // console.log("logout done", req.user);
+
+        await req.user.save();
+        res.status(201).render('login')
+
+    }catch(errormsg){
+        res.status(401).render('error',{ errormsg  })
+    }
+});
+
 router.get('*', (req,res) => {
     res.status(401).render('error',{
         errormsg: 'Error 404 Page Not Found'
